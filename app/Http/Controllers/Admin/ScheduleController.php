@@ -28,6 +28,7 @@ class ScheduleController extends Controller
     {
         $merchantDetails = MerchantDetail::where('merchant_id', $merchant->id)
             ->where('status', '1')
+            ->orderBy('name', 'asc')
             ->get();
         $open = MerchantDetail::pluck('name', 'id')->toArray();
 
@@ -36,6 +37,7 @@ class ScheduleController extends Controller
         // Ambil data MerchantDetailCategory sesuai dengan id MerchantDetail yang dipilih
         $detailCategories = $selectedDetail
             ? MerchantDetailCategory::where('merchant_detail_id', $selectedDetail->id)
+            ->orderBy('name', 'asc')
             ->get()
             : collect(); // jika tidak ada data, kembalikan collection kosong
 
@@ -44,7 +46,7 @@ class ScheduleController extends Controller
 
 
         $schedules = $selectedSchedule
-            ? Schedule::where('merchant_detail_category_id', $selectedSchedule->id)->get()
+            ? Schedule::where('merchant_detail_category_id', $selectedSchedule->id)->orderBy('date', 'desc')->get()
             : collect(); // jika tidak ada data, kembalikan collection kosong
 
 

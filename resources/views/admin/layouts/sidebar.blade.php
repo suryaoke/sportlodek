@@ -195,10 +195,7 @@
                      </div>
                  </a>
                  <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                     <a href="#" class="dropdown-item">Status</a>
-                     <a href="./profile.html" class="dropdown-item">Profile</a>
-                     <a href="#" class="dropdown-item">Feedback</a>
-                     <div class="dropdown-divider"></div>
+                   
                      <a href="./settings.html" class="dropdown-item">Settings</a>
                      <a href="./sign-in.html" class="dropdown-item">Logout</a>
                  </div>
@@ -270,7 +267,7 @@
                      </a>
                  </li>
                  <li class="nav-item">
-                     <a class="nav-link" href="{{ route('admin.merchant.schedule') }}">
+                     <a class="nav-link" href="{{ route('admin.merchant.schedule.booking') }}">
                          <span
                              class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
                              <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"

@@ -21,3 +21,14 @@ $('.toggle-confirm-password').on('click', function() {
         confirmPasswordField.attr('type', 'password');
     }
 });
+
+// Toggle new password visibility
+$('.toggle-new-password').on('click', function() {
+    let newPasswordField = $(this).closest('.input-group').find('.new-password');
+
+    if (newPasswordField.attr('type') === 'password') {
+        newPasswordField.attr('type', 'text');
+    } else {
+        newPasswordField.attr('type', 'password');
+    }
+});

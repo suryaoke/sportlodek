@@ -197,14 +197,14 @@ class MerchantController extends Controller
 
     public function detail(Merchant $merchant, $id = null)
     {
-        $merchantDetails = MerchantDetail::where('merchant_id', $merchant->id)->get();
+        $merchantDetails = MerchantDetail::where('merchant_id', $merchant->id)->orderBy('name', 'asc')->get();
         $open = MerchantDetail::pluck('name', 'id')->toArray();
 
         $selectedDetail = $id ? MerchantDetail::find($id) : null;
 
         // Ambil data MerchantDetailCategory sesuai dengan id MerchantDetail yang dipilih
         $detailCategories = $selectedDetail
-            ? MerchantDetailCategory::where('merchant_detail_id', $selectedDetail->id)->get()
+            ? MerchantDetailCategory::where('merchant_detail_id', $selectedDetail->id)->orderBy('name', 'asc')->get()
             : collect(); // jika tidak ada data, kembalikan collection kosong
 
         return view('admin.merchant.detail', compact('detailCategories', 'merchant', 'merchantDetails', 'selectedDetail'));

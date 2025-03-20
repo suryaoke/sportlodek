@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\Admin\BookingController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MerchantController;
+use App\Http\Controllers\Admin\ProfileAdminControllerr;
 use App\Http\Controllers\Admin\ScheduleController;
 use App\Http\Controllers\ProfileController;
+
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -33,6 +36,16 @@ Route::group(
     function () {
 
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+        Route::get('/pofile', [ProfileAdminControllerr::class, 'profile'])->name('profile');
+
+        Route::patch('/profile', [ProfileAdminControllerr::class, 'update'])->name('profile.update');
+
+        Route::post('/profile/image', [ProfileAdminControllerr::class, 'storeImage'])->name('profile.store.image');
+
+        Route::delete('/profile/delete', [ProfileAdminControllerr::class, 'destroy'])->name('profile.delete');
+
+        Route::get('/password', [ProfileAdminControllerr::class, 'password'])->name('password');
 
         Route::resource('merchant', MerchantController::class);
 
@@ -78,6 +91,9 @@ Route::group(
 
 
 
+        Route::get('schedule/booking', [BookingController::class, 'index'])->name('merchant.schedule.booking');
+
+        Route::get('schedule/booking/detail/{merchant}/price/{id?}/{scheduleId?}/{scheduleDetailId?}', [BookingController::class, 'detail'])->name('schedule.detail.booking');
     }
 );
 

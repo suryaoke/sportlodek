@@ -23,6 +23,7 @@ class PasswordController extends Controller
         $request->user()->update([
             'password' => Hash::make($validated['password']),
         ]);
+        notyf()->success("User Updated Successfully!");
 
         return back()->with('status', 'password-updated');
     }
